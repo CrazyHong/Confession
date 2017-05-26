@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Confession</title>
+    <style type="text/css" media="screen, projection">
+        #ticker {
+            height: 24em;
+            padding: 0.6em 0;
+            margin: 0 0 1.8em 0;
+            border-top: 3px solid #efefef;
+            border-bottom: 3px solid #efefef;
+            position: relative;
+        }
+
+            #ticker .cursor {
+                display: inline-block;
+                background: #565c61;
+                width: 0.5em;
+                height: 0.7em;
+                text-align: center;
+            }
+
+            #ticker p {
+                margin-bottom: 0.8em;
+            }
+
+            #ticker code {
+                margin: 0.4em 0.4em;
+                display: block;
+            }
+
+            #ticker .next {
+                position: absolute;
+                bottom: 1em;
+            }
+
+            pre{
+                line-height: .5em;
+            }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.jticker.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            // Instantiate jTicker
+            jQuery("#ticker").ticker({
+                cursorList: " ",
+                rate: 10,
+                delay: 4000
+            }).trigger("play").trigger("stop");
+
+            // Trigger events
+            jQuery(".stop").click(function () {
+                jQuery("#ticker").trigger("stop");
+                return false;
+            });
+
+            jQuery(".play").click(function () {
+                jQuery("#ticker").trigger("play");
+                return false;
+            });
+
+            jQuery(".speedup").click(function () {
+                jQuery("#ticker")
+                    .trigger({
+                        type: "control",
+                        item: 0,
+                        rate: 10,
+                        delay: 4000
+                    })
+                return false;
+            });
+
+            jQuery(".slowdown").click(function () {
+                jQuery("#ticker")
+                    .trigger({
+                        type: "control",
+                        item: 0,
+                        rate: 90,
+                        delay: 8000
+                    })
+                return false;
+            });
+
+            jQuery(".next").live("click", function () {
+                jQuery("#ticker")
+                    .trigger({ type: "play" })
+                    .trigger({ type: "stop" });
+                return false;
+            });
+
+            jQuery(".style").click(function () {
+                jQuery("#ticker")
+                    .trigger({
+                        type: "control",
+                        cursor: jQuery("#ticker").data("ticker").cursor.css({ width: "4em", background: "#efefef", position: "relative", top: "1em", left: "-1em" })
+                    })
+                return false;
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div id="content">        
+        <div id="ticker">
+            <div>
+                <pre>//这不是一个BUG</pre>
+                <pre>console.writeLn {</pre>
+                <pre>  To：you</pre>
+                <pre></pre>
+                <pre>        .  .##                #,                     #i           #G  ##</pre>
+                <pre>  G#######  ## ##:   ###################  #######   ##           ##   ##</pre>
+                <pre> ######f    ##  ##   iiiiiiiii#jiiiiiiii  #######   ##           ##  j#G</pre>
+                <pre>     ##     ##   #    #################        ##  #########f   ##   ###########</pre>
+                <pre>     ##     ##                            ##   ##  ##     ##   ##;  ##        ##</pre> 
+                <pre>####################   ###############     ## i#j ##  K#  #L  .##; ,#K   f#  :#L</pre>
+                <pre>.....##.....##......   ##           ##     f#iK# ##L  ## ##   ###; ##    f#   #</pre>
+                <pre>     ##     K#   #j    ###############      ;###      ##     ## #;    #L f#  #,</pre>
+                <pre>   ;K#####.  #R ##        ##     ;#D         E##      ##K       #;   ##  f#  f#</pre>
+                <pre>D######      ####    ###################L    ###K    E#K#       #;   ##  f#   ##</pre>
+                <pre> E:  ##      L##.                           W# ##    ## #,      #;  f#,  f#   ##</pre>
+                <pre>     ##      D##       ###############      ## f#;  .## ##      #;  ##   f#   ##</pre>
+                <pre>     ##    ###f#, ##   #G           ;#    j#W      ##    ##f    #;  #    f#   L,</pre>
+                <pre> D####l  ##     ###    #WGGGGGGGGGGGE#    #      .#G       ##   #;    #####</pre>                                 
+                <pre></pre>
+                <pre>}</pre>             
+                <pre>alert('你愿意么？')</pre>
+            </div>            
+        </div>
+    </div>       
+</body>
+</html>
